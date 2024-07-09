@@ -1,10 +1,15 @@
-import react from "react";
+import React from "react";
+import { TodoContext } from "../TodoContext";
 import "./EmptyTodos.css";
 
 
 function EmptyTodos(){
+   const {openMessageCreate, setOpenMessageCreate} = React.useContext(TodoContext)
+   setOpenMessageCreate(true)
    return (
-    <p>Crear nuevos todos</p>
+      <div className = "EmptyTodos">
+         <p> CREATE NEW TODOS</p>
+      </div>
    );
 }
 
