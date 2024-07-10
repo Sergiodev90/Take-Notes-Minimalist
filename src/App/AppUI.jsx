@@ -67,6 +67,9 @@ import { EmptyTodos } from "../components/EmptyTodos";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import { TodoContext } from "../components/TodoContext";
 import {TodoForm} from "../components/TodoForm";
+import { TodoNotFound} from "../components/TodoNotFound";
+import {TodoContainer} from "../components/TodoContainer"
+import { Root } from "./Root";
 import { Modal } from "../components/Modal";
 
 function AppUI() {
@@ -78,14 +81,15 @@ function AppUI() {
     completeTodo,
     deleteTodo,
     openModal,
-    setOpenModal,
     todos
   } = React.useContext(TodoContext);
 
   return (
-    <>
+    <>  
+    <Root>
+     <TodoSearch />
       <TodoCounter />
-      <TodoSearch />
+        <TodoContainer className="TodoList-Container">
           <TodoList>
             {loading && (
               <>
@@ -95,7 +99,8 @@ function AppUI() {
               </>
             )}
             {error && <TodosError />}
-            {!loading && todos.length === 0 && <EmptyTodos/> }
+            {!loading && todos.length <=0 && <EmptyTodos/> }
+            {!loading && searchedTodos.length === 0 && todos.length > 0  && <TodoNotFound/>}
             {searchedTodos.map((todo) => (
               <TodoItem
                 key={todo.text}
@@ -106,11 +111,13 @@ function AppUI() {
               />
             ))}
           </TodoList>
+          </TodoContainer>
       <CreateTodoButton />
       {openModal && 
         <Modal>
           <TodoForm/>
         </Modal>}
+        </Root>
     </>
 
   );

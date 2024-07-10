@@ -1,4 +1,5 @@
 import { CompleteIcon } from "../CompleteIcon";
+import { TodoCategory } from "../TodoCategory";
 import { DeleteIcon } from "../DeleteIcon";
 import "./TodoItem.css";
 function TodoItem(props) {
@@ -10,6 +11,7 @@ function TodoItem(props) {
         {props.text}
       </p>
       <DeleteIcon onDelete={props.onDelete} />
+      <TodoCategory></TodoCategory>
     </li>
   );
 }

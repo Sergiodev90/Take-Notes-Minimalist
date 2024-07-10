@@ -4,6 +4,8 @@
   margin: 0;
   padding: 48px;
   font-weight: normal;
+  grid-row:1;
+  grid-column: 7;
 }
 
 .TodoCounter span {

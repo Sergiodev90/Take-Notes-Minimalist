@@ -31,7 +31,7 @@
 
 
 /* En la clase corazon vamos a llamar latidos en la animación  */
-.pulse {
+.CreateTodoButton--start {
   animation: pulse 1.5s infinite;
 }
 

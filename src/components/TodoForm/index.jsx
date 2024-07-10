@@ -12,7 +12,7 @@ function TodoForm(){
     const onSubmit = (event) =>{
         event.preventDefault();
 
-        if(newTodoValue == ''){
+        if(newTodoValue === ''){
             setOpenModal(false)
         }else{
             addTodo(newTodoValue)

@@ -13,7 +13,6 @@ function TodoProvider({ children }) {
   
   const [searchValue, setSearchValue] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false);
-  const [openMessageCreate, setOpenMessageCreate] = React.useState("false")
   const completedTodos = todos.filter(
     todo => !!todo.completed
   ).length;
@@ -66,8 +65,7 @@ function TodoProvider({ children }) {
       setOpenModal,
       addTodo,
       todos,
-      openMessageCreate,
-      setOpenMessageCreate
+   
       
     }}>
       {children}
