@@ -1,0 +1,7 @@
+.TodoContainer--list{
+    grid-row: 5;
+    grid-column: 7;
+    padding: 20px;
+    border: solid 1px;
+    overflow-y: auto;
+}
