@@ -46,3 +46,17 @@
     transform: scale(1);
   }
 }
+
+
+
+@media (200px <= width <= 830px){
+  .CreateTodoButton{
+      grid-column: 3;
+      grid-row-start: 8;
+      grid-row-end: 11;
+      position: fixed;
+      right: 97px;
+      bottom: inherit;
+
+  }
+}

@@ -17,7 +17,9 @@ function TodoProvider({ children }) {
     todo => !!todo.completed
   ).length;
   const totalTodos = todos.length;
-
+  const RandomId = () =>{
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  }
   const searchedTodos = todos.filter(
     (todo) => {
       const todoText = todo.text.toLowerCase();
@@ -28,7 +30,7 @@ function TodoProvider({ children }) {
 
   const addTodo = (text) =>{
     const newTodos = [...todos];
-    newTodos.push({ text, completed: false })
+    newTodos.push({id:RandomId(), text, completed: false  })
     saveTodos(newTodos)
   }
 

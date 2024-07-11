@@ -4,4 +4,21 @@
     padding: 20px;
     border: solid 1px;
     overflow-y: auto;
+    border-radius: 2%;
+
+    background-color: #0c3959;
+    -webkit-box-shadow: inset 0px 0px 18px -1px rgba(5,4,5,0.79);
+    -moz-box-shadow: inset 0px 0px 18px -1px rgba(5,4,5,0.79);
+    box-shadow: inset 0px 0px 18px -1px rgba(5,4,5,0.79);
 }
+
+
+
+@media (200px <= width <= 830px){
+    .TodoContainer--list{
+        grid-row: 6;
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+    
+  }
