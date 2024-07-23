@@ -41,6 +41,7 @@
   },
   "homepage": "https://Sergiodev90.github.io/curso-react-intro",
   "devDependencies": {
+    "axios": "^1.7.2",
     "gh-pages": "^6.1.1"
   }
 }

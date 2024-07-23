@@ -121,7 +121,7 @@ function TodoSearch() {
         item.onclick = function (e) {
           span.innerText = e.target.innerText;
           if (e.target.innerText === "Everything") {
-            input.placeholder = "Search Anything...";
+            input.placeholder = "Search";
           } else {
             input.placeholder = "Search in " + e.target.innerText + "...";
           }
@@ -131,6 +131,10 @@ function TodoSearch() {
   }, []);
 
   return (
+    <>
+    <div className="search-bar-mobile">
+    <i className="fa-solid fa-magnifying-glass"></i>
+    </div>
     <div className={`search-bar ${isExpanded ? 'expanded' : ''}`}>
       <div className="dropdown">
         <div id="drop-text" className="dropdown-text">
@@ -145,12 +149,11 @@ function TodoSearch() {
           <li className="dropdown-list-item">Shorts</li>
         </ul>
       </div>
-
       <div className="search-box">
         <input
           type="text"
           id="search-input"
-          placeholder="Search anything..."
+          placeholder="Search"
           value={SearchValue}
           onChange={(event) => {
             setSearchValue(event.target.value);
@@ -165,6 +168,7 @@ function TodoSearch() {
         <i className={`fa-solid ${isExpanded ? 'fa-times' : 'fa-magnifying-glass'}`}></i>
       </button>
     </div>
+    </>
   );
 }
 
