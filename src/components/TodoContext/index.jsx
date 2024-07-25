@@ -28,9 +28,9 @@ function TodoProvider({ children }) {
     }
   );
 
-  const addTodo = (text) =>{
+  const addTodo = (text, category) =>{
     const newTodos = [...todos];
-    newTodos.push({id:RandomId(), text, completed: false  })
+    newTodos.push({id:RandomId(), text, completed: false, category: category})
     saveTodos(newTodos)
   }
 

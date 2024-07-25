@@ -1,29 +1,28 @@
+:root{
+  --sky-color-cyan-400: #5a9bd6;
+}
+
 .CreateTodoButton {
-  background-color: #61DAFA;
+  position: inherit;
+  background-color: var(--sky-color-cyan-400);
   box-shadow: 0px 5px 25px rgb(2 13 16 / 50%);
   border: none;
-  border-radius: 50%;
+  border-radius: 0.25rem;
   cursor: pointer;
   font-size: 50px;
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
   font-weight: bold;
   color: #FAFAFA;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 70px;
-  width: 70px;
-
-  transform: rotate(0);
+  width: 200px;
+  top: 208px;
   transition: .3s ease;
   z-index: 1;
 }
 
-.CreateTodoButton:hover {
-  transform: rotate(224deg);
-}
+
 
 .CreateTodoButton-open{
   z-index: -1;
@@ -33,17 +32,5 @@
 /* En la clase corazon vamos a llamar latidos en la animación  */
 .CreateTodoButton--start {
   animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 

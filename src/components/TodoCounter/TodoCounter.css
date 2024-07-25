@@ -1,3 +1,7 @@
+:root{
+  --neon: drop-shadow(0px 0px 3px white)
+}
+
 .TodoCounter {
   font-size: 24px;
   text-align: center;
@@ -7,6 +11,7 @@
   grid-row:1;
   grid-column: 7;
   color: white;
+  filter: var(--neon);
 }
 
 .TodoCounter span {
@@ -17,8 +22,9 @@
 
 @media (200px <= width <= 830px){
   .TodoCounter{
-    grid-row: 7;
+    grid-row: 2;
     grid-column-start: 2;
+    grid-column-end: 4;
     font-size: 15px;
     padding: 10px;
   }

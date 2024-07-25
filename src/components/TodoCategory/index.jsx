@@ -1,3 +1,5 @@
+import './TodoCategory.css'
+
 function TodoCategory(){
     return(
         <span>Example of category</span>
@@ -6,3 +8,5 @@ function TodoCategory(){
 }
 
 export {TodoCategory}	
+
+

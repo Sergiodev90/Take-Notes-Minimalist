@@ -84,6 +84,8 @@ function AppUI() {
     todos
   } = React.useContext(TodoContext);
 
+
+
   return (
     <>  
     <Root>
@@ -112,7 +114,6 @@ function AppUI() {
             ))}
           </TodoList>
           </TodoContainer>
-      <CreateTodoButton />
       {openModal && 
         <Modal>
           <TodoForm/>

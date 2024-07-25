@@ -1,3 +1,17 @@
+:root{
+
+
+    --sky-color-white: #f3f6fc;
+    --sky-color-gray: #e5eef9;
+    --sky-color-cyan: #c6dbf1;
+    --sky-color-cyan-300: #93bde6;
+    --sky-color-cyan-400: #5a9bd6;
+    --sky-color-cyan-500: #357ec2;
+    --sky-clor-cyan-bold-600: #2563a4;
+    --sky-color-cyan-bold-700: #1f5085;
+    --sky-color-blue-800: #1D446f;
+    --main-color-background: #19324f;
+}
 html, body {
   width: 100%;
   height: 100%;
@@ -23,9 +37,7 @@ body {
   grid-template-rows:  5% 5% 5% 10% 60% 15% ;
 }
 
-.container-buttons__mobile {
-  
-}
+
 
 .inavtive{
   display: none;

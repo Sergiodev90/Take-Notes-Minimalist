@@ -15,5 +15,6 @@ svg {
     box-sizing: border-box;
     display: block; /* Cambiado de grid a block para asegurar el ajuste completo */
     background-color: #0e4166;
-    background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
+    background-image: linear-gradient(to right top, #0c3757, #133554, #183350, #1b314d, #1e2f49, #1e2f49, #1e2f49, #1e2f49, #1b314d, #183350, #133554, #0c3757);
+    
 }

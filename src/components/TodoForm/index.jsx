@@ -8,6 +8,7 @@ function TodoForm(){
         setOpenModal,
     } = React.useContext(TodoContext);
     const [newTodoValue, setNewTodoValue] = React.useState("");
+    const [newCategoryValue,setNewCategoryValue] = React.useState("");
 
     const onSubmit = (event) =>{
         event.preventDefault();
@@ -15,7 +16,7 @@ function TodoForm(){
         if(newTodoValue === ''){
             setOpenModal(false)
         }else{
-            addTodo(newTodoValue)
+            addTodo(newTodoValue, newCategoryValue)
             setOpenModal(false)
         }
     }
@@ -23,9 +24,13 @@ function TodoForm(){
         event.preventDefault();
         setOpenModal(false)
     }
-    const onChange = (event) =>{
+    const onChangeCategory = (event) =>{
+        setNewCategoryValue(event.target.value)
+    }
+    const onChangeTodo= (event) =>{
         setNewTodoValue(event.target.value);
     }
+
 
     return(
         <form onSubmit = {onSubmit}>
@@ -33,7 +38,12 @@ function TodoForm(){
             <textarea
                 placeholder = "Estudiar Full Stack Development"
                 value={newTodoValue}
-                onChange={onChange}
+                onChange={onChangeTodo}
+            />
+            <textarea
+                placeholder = "Category"
+                value={newCategoryValue}
+                onChange={onChangeCategory}
             />
             <div className="TodoForm-buttonContainer"></div>
             <button type ="button" className = "TodoForm-button TodoForm-button TodoForm-button--cancel" onClick = {onCancel}>
