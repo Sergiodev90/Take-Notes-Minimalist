@@ -85,7 +85,12 @@ function AppUI() {
     searchValue,
     setSearchValue,
     completedTodos,
-    totalTodos
+    totalTodos,
+    stateClickCompleted,
+    stateClickAll,
+    stateClickArchived,
+    
+
   } = React.useContext(TodoContext);
 
 
@@ -94,12 +99,15 @@ function AppUI() {
     <>  
     <Root>
       <TodoHeader>
-        <TodoCounter completed={completedTodos} total={totalTodos}/>
+        <TodoCounter completed={completedTodos} total={totalTodos} />
         <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
       </TodoHeader>
         <TodoContainer className="TodoList-Container">
          <TodoList
           Loading={loading}
+          stateClickAll={stateClickAll}
+          stateClickCompleted={stateClickCompleted}
+          stateClickArchived={stateClickArchived}
           error={error}
           searchedTodos = {searchedTodos}
           todos = {todos}
@@ -107,8 +115,26 @@ function AppUI() {
           onLoading = {()=> <TodosLoading/>}
           onEmpty = {() => <EmptyTodos/>}
           onNotFound = {() => <TodoNotFound/>}
-
           
+          renderAll ={(todo)=>(
+              <TodoItem
+                key={todo.id}
+                text={todo.text}
+                completed={todo.completed}
+                isOnArchives={todo.inArchived}
+                onComplete={() => completeTodo(todo.id)}
+                onDelete={() => deleteTodo(todo.id)}
+              />
+            )}
+          renderInCompleted ={(todo) =>{
+            <TodoItem
+            key={todo.id}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.id)}
+            onDelete={() => deleteTodo(todo.id)}
+          />
+          }}
           >
             {/* {loading && (
               <>
@@ -117,20 +143,13 @@ function AppUI() {
                 <TodosLoading />
               </>
             )} */}
-            {searchedTodos.map((todo) => (
-              <TodoItem
-                key={todo.text}
-                text={todo.text}
-                completed={todo.completed}
-                onComplete={() => completeTodo(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
-              />
-            ))}
+
+              
           </TodoList>
           </TodoContainer>
       {openModal && 
-        <Modal>
-          <TodoForm/>
+        <Modal >
+          <TodoForm />
         </Modal>}
         </Root>
     </>
