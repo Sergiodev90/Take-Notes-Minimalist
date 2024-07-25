@@ -64,13 +64,13 @@ import { TodoItem } from "../components/TodoItem";
 import { TodosLoading } from "../components/TodosLoading";
 import { TodosError } from "../components/TodosError";
 import { EmptyTodos } from "../components/EmptyTodos";
-import { CreateTodoButton } from "../components/CreateTodoButton";
 import { TodoContext } from "../components/TodoContext";
 import {TodoForm} from "../components/TodoForm";
 import { TodoNotFound} from "../components/TodoNotFound";
 import {TodoContainer} from "../components/TodoContainer"
 import { Root } from "./Root";
 import { Modal } from "../components/Modal";
+import { TodoHeader } from "../components/TodoHeader";
 
 function AppUI() {
 
@@ -81,7 +81,11 @@ function AppUI() {
     completeTodo,
     deleteTodo,
     openModal,
-    todos
+    todos,
+    searchValue,
+    setSearchValue,
+    completedTodos,
+    totalTodos
   } = React.useContext(TodoContext);
 
 
@@ -89,20 +93,30 @@ function AppUI() {
   return (
     <>  
     <Root>
-     <TodoSearch />
-      <TodoCounter />
+      <TodoHeader>
+        <TodoCounter completed={completedTodos} total={totalTodos}/>
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+      </TodoHeader>
         <TodoContainer className="TodoList-Container">
-          <TodoList>
-            {loading && (
+         <TodoList
+          Loading={loading}
+          error={error}
+          searchedTodos = {searchedTodos}
+          todos = {todos}
+          onError = {()=><TodosError/>}
+          onLoading = {()=> <TodosLoading/>}
+          onEmpty = {() => <EmptyTodos/>}
+          onNotFound = {() => <TodoNotFound/>}
+
+          
+          >
+            {/* {loading && (
               <>
                 <TodosLoading />
                 <TodosLoading />
                 <TodosLoading />
               </>
-            )}
-            {error && <TodosError />}
-            {!loading && todos.length <=0 && <EmptyTodos/> }
-            {!loading && searchedTodos.length === 0 && todos.length > 0  && <TodoNotFound/>}
+            )} */}
             {searchedTodos.map((todo) => (
               <TodoItem
                 key={todo.text}

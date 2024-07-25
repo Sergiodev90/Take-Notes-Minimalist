@@ -20,7 +20,7 @@ function TodoItem(props) {
       </p>
       {/* <DeleteIcon onDelete={props.onDelete} /> */}
       <TodoCategory />
-      <ArchiveBoxIcon className="ArchiveIcon"/>
+      <ArchiveBoxIcon className="ArchiveIcon" onClick={props.onDelete}/>
     </li>
   );
 }

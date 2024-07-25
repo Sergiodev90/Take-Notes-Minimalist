@@ -83,10 +83,8 @@
 
 import "./TodoSearch.css";
 import React, { useEffect, useState } from "react";
-import { TodoContext } from "../TodoContext";
 
-function TodoSearch() {
-  const { SearchValue, setSearchValue } = React.useContext(TodoContext);
+function TodoSearch({SearchValue, setSearchValue}) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React from "react";
 import { CreateTodoButton } from "../CreateTodoButton";
 import './TodoContainer.css';
 
-function TodoContainer({children}){
+function TodoContainer(props){
     return(
 
         <>
@@ -14,9 +14,12 @@ function TodoContainer({children}){
              <CreateTodoButton />
 
         </div>
+
         <div className="TodoContainer--list">
 
-        <div className="TodoContainer-TodoItem">{children}</div>
+        <div className="TodoContainer-TodoItem">
+            {props.children}
+            </div>
         </div>
         </>
    

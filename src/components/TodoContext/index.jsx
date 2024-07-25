@@ -30,7 +30,7 @@ function TodoProvider({ children }) {
 
   const addTodo = (text, category) =>{
     const newTodos = [...todos];
-    newTodos.push({id:RandomId(), text, completed: false, category: category})
+    newTodos.push({id:RandomId(), text, completed: false, category: category,inAll:true,inCompleted:false, inArchived:false})
     saveTodos(newTodos)
   }
 
