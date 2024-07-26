@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const TodoContext = React.createContext();
@@ -17,9 +17,11 @@ function TodoProvider({ children }) {
   const [stateClickAll,setStateClickAll] = React.useState(true);
   const [stateClickCompleted,setStateClickCompleted] = React.useState(false);
   const [stateClickArchived,setStateClickArchived] = React.useState(false);
+  const [stateClickPending, setStateClickPending] = React.useState(false)
 
   const [completed,setCompleted] = useState(false)
   const [all,setAll] = useState(true)
+  const [pending,setPending] = useState(true)
   const [archived,setArchived] = useState(false)
 
 
@@ -31,7 +33,7 @@ function TodoProvider({ children }) {
     todo => !!todo.completed
   ).length;
 
-  const totalTodos = todos.length;
+  const totalTodos = todos.filter((todo) => todo.inAll).length;
 
   const RandomId = () =>{
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
@@ -48,13 +50,15 @@ function TodoProvider({ children }) {
 
   const addTodo = (text, category) =>{
     const newTodos = [...todos];
+    
     newTodos.push({
       id:RandomId(), 
       text, 
       completed: completed, 
       category: category,
+      pending:pending,
       inAll:all,
-      inArchived:archived,
+      inArchived:false
     })
     saveTodos(newTodos)
   }
@@ -62,23 +66,26 @@ function TodoProvider({ children }) {
   const completeTodo = (id) => {
     const newTodos = todos.filter((todo)=>{
       if(todo.id === id){
-      todo.completed = !completed
-      todo.inArchived = false
-      todo.inAll = !all
+      setCompleted(!completed)
+      setPending(!pending)
+      todo.completed = completed
+      todo.pending = pending
+      todo.inAll = all
       }
       return todo
     })
-
     saveTodos(newTodos)
   };
 
   const deleteTodo = (id) => {
     // const newTodos = todos.filter((todo) => todo.id !== id);
-    const newTodos = todos.filter((todo) => {
+    const newTodos = todos.filter((todo) =>{
+
       if(todo.id === id){
-        todo.inArchived = true;
-        todo.inAll = false;
-        todo.completed = false
+        todo.inArchived = true
+        todo.inAll = undefined
+        todo.completed  = undefined
+        todo.pending = undefined
       }
       return todo
     })
@@ -115,8 +122,10 @@ function TodoProvider({ children }) {
       setStateClickArchived,
       stateClickAll,
       setStateClickAll,
+      setStateClickPending,
+      stateClickPending,
 
-      completed,archived,all,setCompleted,setArchived,setAll
+      completed,archived,all,setCompleted,setArchived,setAll,pending,setPending
       
   
     }}>

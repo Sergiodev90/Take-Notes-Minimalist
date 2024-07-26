@@ -1,9 +1,9 @@
 import React from "react";
 import "./CheckBoxCircular.css";
 
-function CheckboxCircular({ checked, onChange }) {
+function CheckboxCircular({ checked, onChange,inArchived }) {
   return (
-    <label className="checkbox-container">
+    <label className={`${inArchived ? "inactive" : "checkbox-container"}`}>
       <input
         type="checkbox"
         checked={checked}

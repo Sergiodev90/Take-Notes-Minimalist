@@ -89,8 +89,8 @@ function AppUI() {
     stateClickCompleted,
     stateClickAll,
     stateClickArchived,
-    
-
+    stateClickPending,
+    setOpenModal
   } = React.useContext(TodoContext);
 
 
@@ -108,6 +108,7 @@ function AppUI() {
           stateClickAll={stateClickAll}
           stateClickCompleted={stateClickCompleted}
           stateClickArchived={stateClickArchived}
+          stateClickPending = {stateClickPending}
           error={error}
           searchedTodos = {searchedTodos}
           todos = {todos}
@@ -117,7 +118,8 @@ function AppUI() {
           onNotFound = {() => <TodoNotFound/>}
           
           renderAll ={(todo)=>(
-              <TodoItem
+
+                <TodoItem
                 key={todo.id}
                 text={todo.text}
                 completed={todo.completed}
@@ -125,16 +127,9 @@ function AppUI() {
                 onComplete={() => completeTodo(todo.id)}
                 onDelete={() => deleteTodo(todo.id)}
               />
+
+
             )}
-          renderInCompleted ={(todo) =>{
-            <TodoItem
-            key={todo.id}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.id)}
-            onDelete={() => deleteTodo(todo.id)}
-          />
-          }}
           >
             {/* {loading && (
               <>
@@ -148,7 +143,7 @@ function AppUI() {
           </TodoList>
           </TodoContainer>
       {openModal && 
-        <Modal >
+        <Modal setOpenModal={setOpenModal} openModal={openModal}>
           <TodoForm />
         </Modal>}
         </Root>
