@@ -73,7 +73,6 @@ import { Modal } from "../components/Modal";
 import { TodoHeader } from "../components/TodoHeader";
 
 function AppUI() {
-
   const {      
     loading,
     error,

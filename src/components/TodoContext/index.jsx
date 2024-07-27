@@ -124,8 +124,14 @@ function TodoProvider({ children }) {
       setStateClickAll,
       setStateClickPending,
       stateClickPending,
-
-      completed,archived,all,setCompleted,setArchived,setAll,pending,setPending
+      completed,
+      archived,
+      all,
+      setCompleted,
+      setArchived,
+      setAll,
+      pending,
+      setPending
       
   
     }}>

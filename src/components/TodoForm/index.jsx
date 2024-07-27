@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TodoContext } from "../TodoContext";
+import { TodoTag } from "../TodoTag"
 import "./TodoForm.css"
 
 function TodoForm(){
+
     const {
         addTodo,
         setOpenModal,
     } = React.useContext(TodoContext);
     const [newTodoValue, setNewTodoValue] = React.useState("");
     const [newCategoryValue,setNewCategoryValue] = React.useState("");
+    const [isTodoTag,setTodoTag] = React.useState(false)
+
+    const DetectEvents = (event) =>{
+        if(event.keyCode === 32){
+            setTodoTag(!isTodoTag)
+            console.log("WAS PRESSED THE SPACE KEY")
+        }
+    }
+
 
     const onSubmit = (event) =>{
         event.preventDefault();
@@ -41,10 +52,14 @@ function TodoForm(){
                 onChange={onChangeTodo}
             />
             <textarea
+                onKeyUpCapture={DetectEvents}
                 placeholder = "Category"
                 value={newCategoryValue}
                 onChange={onChangeCategory}
-            />
+            />   
+                {isTodoTag && <TodoTag text={newCategoryValue}/>}
+            
+            
             <div className="TodoForm-buttonContainer"></div>
             <button type ="button" className = "TodoForm-button TodoForm-button TodoForm-button--cancel" onClick = {onCancel}>
                 Cancelar
