@@ -44,11 +44,11 @@ function TodoForm() {
   const addCategory = (event) =>{
     event.preventDefault()
     console.log(newCategoryValue.length)
-    const newCategories = CategoriesList
-    if(newCategoryValue){
-        newCategories.unshift([...newCategoryValue])
-        setCategoriesList(newCategories)
-    }
+    const newCategories = [...CategoriesList]
+
+    newCategories.unshift(...newCategoryValue)
+    setCategoriesList(newCategories)
+    
     setNewCategoryValue('')
 
     setTodoTag(false)
