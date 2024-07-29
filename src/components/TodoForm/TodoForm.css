@@ -19,27 +19,36 @@ section {
     display: flex;
     border: none;
     resize: none;
-    background-color: #ededed;
+    background-color: #357ec2;
     border-radius: 0.25rem;
     padding: 10px;
     margin-bottom: 40px;
+    color: white;
+    font-size: 20px;
+    filter: drop-shadow(0px 0px 3px white);
+    overflow-y: hidden;
+    transition: all 0.5s ease-in;
   }
+
   .container_TodoTag__TODO{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 276px;
+    justify-content: end;
+
   }
   .container_TodoTag_TodoCalendar{
     display: flex;
     align-items: center;
-    background-color: #f9f9f9;
+    background-color: #1D446f;
     border-radius: 25px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex-direction: row;
     justify-content: center;
     gap: 40px;
+    filter: drop-shadow(0px 0px 3px white)  ;
   }
 
   .Text-Area__Category {
@@ -52,11 +61,17 @@ section {
     resize: none;
     width: 521px;
     height: 74px;
+    background-color: #357ec2;
+    padding: 20px;
+    color: white;
+    justify-content:start;
+    border:1px solid bla;
   }
+  
 
   .button_add--category{
-    background-color: #4CAF50;
-    width: 521px;
+    background-color: #1e2f49;
+    width: 120px;
     height: 40px;
     color: white;
     border: none;
@@ -64,12 +79,18 @@ section {
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-right: 442px;
+    margin-top: 20px;
+    transition: all 0.3s ease-in;
   }
   .button_add--category:hover {
-    background-color: #45a049;
+    filter: drop-shadow(0px 0px 3px white);
+    transition: all 0.3 ease-in;
+    color: #f9f9f9;
   }
+
   .Container-TodoTag {
-    width: 521px;
+    width: 411px;
     height: auto;
     display: flex;
     flex-wrap: wrap;
@@ -77,6 +98,8 @@ section {
     background-color: #f9f9f9;
     border-radius: 15px;
     padding: 10px;
+    background-color: transparent;
+    margin-right: 156px;
 
   }
 
@@ -89,7 +112,8 @@ section {
   }
   
   textarea:focus {
-    outline-color: #61DAFA;
+    outline-color: white;
+    transition: all 0.5s ease-in;
   }
   
   .TodoForm-buttonContainer {
