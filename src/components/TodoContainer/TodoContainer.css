@@ -57,7 +57,7 @@
 .Eyelashes-TodoContainer-list {
     align-items: center;
     appearance: none;
-    background-color: #5468ff;
+    background-color:#357ec2;
     border: 0;
     border-radius: 6px;
     box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
@@ -87,13 +87,13 @@
   }
   
   .Eyelashes-TodoContainer-list:focus {
-    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    box-shadow: #1D446f 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #1D446f 0 -3px 0 inset;
   }
   
   /* Active state styles */
   .active {
-    background-color: #3c4fe0;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset, rgba(45, 35, 66, 0.5) 0 0 15px;
+    background-color: #1D446f;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #1D446f 0 -3px 0 inset, rgba(45, 35, 66, 0.5) 0 0 15px;
     transform: translateY(0) !important;
   }
   

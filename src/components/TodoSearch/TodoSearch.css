@@ -156,9 +156,9 @@
   border-radius: 50px;
   background-color: var(--white);
   border: 1px solid var(--white);
-  
   box-shadow: var(--shadow);
   cursor: pointer;
+  
 }
 
 .dropdown-text {

@@ -4,7 +4,7 @@
 
 .CreateTodoButton {
   position: inherit;
-  background-color: var(--sky-color-cyan-400);
+  background-color:#357ec2;
   box-shadow: 0px 5px 25px rgb(2 13 16 / 50%);
   border: none;
   border-radius: 0.25rem;
