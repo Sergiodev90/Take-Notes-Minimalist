@@ -1,11 +1,15 @@
 .todo-tag {
-    display: inline-flex;
+    display: block;
     align-items: center;
     background-color: #e0e0e0;
     border-radius: 12px;
     padding: 0 8px;
     margin: 4px;
     font-size: 14px;
+    word-wrap: break-word; /* Permite que las palabras largas se ajusten al ancho del contenedor */
+    box-sizing: border-box;
+    max-width: 300px;
+    height: 40px;
 }
 
 .todo-tag-remove {
