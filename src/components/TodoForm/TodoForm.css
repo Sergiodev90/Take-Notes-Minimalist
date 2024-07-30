@@ -1,13 +1,14 @@
 section {
     width: 1000px;
-    background-color: #0e4166;
+    background-color: #1e2f49;
     padding: 33px 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 0.25rem;
-
+    filter: drop-shadow(0px 0px 5px white);
+    transition: all 0.3s ease-in;
     }
     form{
       display: flex;
@@ -19,15 +20,14 @@ section {
     display: flex;
     border: none;
     resize: none;
-    background-color: #357ec2;
+    background-color: #1d446f;
     border-radius: 0.25rem;
     padding: 10px;
     margin-bottom: 40px;
     color: white;
     font-size: 20px;
-    filter: drop-shadow(0px 0px 3px white);
     overflow-y: hidden;
-    transition: all 0.5s ease-in;
+
   }
 
   .container_TodoTag__TODO{
@@ -61,7 +61,7 @@ section {
     resize: none;
     width: 521px;
     height: 74px;
-    background-color: #357ec2;
+    background-color: #1e2f49;
     padding: 20px;
     color: white;
     justify-content:start;
@@ -137,12 +137,30 @@ section {
   }
   
   .TodoForm-button--add {
-    background: #61DAFA;
-    box-shadow: 0px 5px 25px rgba(97, 218, 250, 0.5);
+    background: #1d446f;
+    color: white;
+
+
+  }
+  .TodoForm-button--add:hover, .TodoForm-button--add:focus {
+    animation: pulse 1s;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(33, 107, 165, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(33, 107, 165, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 0 10px rgba(33, 107, 165, 0); /* Cambia a transparente */
+    }
   }
   
   .TodoForm-button--cancel {
     background: transparent;
+    color: white;
   }
 
   .TodoForm-buttonContainer{
