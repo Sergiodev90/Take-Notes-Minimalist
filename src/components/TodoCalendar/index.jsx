@@ -3,8 +3,7 @@ import Calendar from 'react-calendar';
 import DatePicker from 'react-datepicker';
 import 'react-calendar/dist/Calendar.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { colors } from '@mui/material';
-
+import './TodoCalendar.css'
 function TodoCalendar (){
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
@@ -16,15 +15,15 @@ function TodoCalendar (){
         setEndDate(date);
       };
       return (
-        <div style={styles.container}>
-          <div style={styles.calendarContainer}>
+        <div className='container'>
+          <div className="calendarContainer">
             <Calendar
               onChange={handleDateChange}
               value={selectedDate}
             />
           </div>
-          <div style={styles.datePickerContainer}>
-            <div style={styles.dateTimePicker}>
+          <div className="datePickerContainer">
+            <div className="dateTimePicker">
               <label>Fecha de inicio:</label>
               <DatePicker
                 selected={startDate}
@@ -36,7 +35,7 @@ function TodoCalendar (){
                 dateFormat="MMMM d, yyyy h:mm aa"
               />
             </div>
-            <div style={styles.dateTimePicker}>
+            <div className="dateTimePicker">
               <label>Fecha de fin:</label>
               <DatePicker
                 selected={endDate}
@@ -53,35 +52,5 @@ function TodoCalendar (){
         </div>
       );
 }
-const styles = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: '20px',
-      border: '1px solid #ddd',
-      borderRadius: '8px',
-      backgroundColor: '#f9f9f9',
-      width: '300px',
-      margin: '0 auto',
-    },
-    calendarContainer: {
-      marginBottom: '20px',
-    },
-    datePickerContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
-    },
-    dateTimePicker: {
-      margin: '10px 0',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    label: {
-      marginBottom: '5px',
-      fontWeight: 'bold',
-      color:'black'
-    },
-  };
+
 export {TodoCalendar}
