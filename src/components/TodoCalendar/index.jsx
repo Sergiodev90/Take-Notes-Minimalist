@@ -6,23 +6,15 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { addDays } from 'date-fns';
 import './TodoCalendar.css';
 
-function TodoCalendar() {
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date());
+function TodoCalendar(props) {
 
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-        setStartDate(date);
-        setEndDate(date);
-    };
 
     return (
         <div className='container'>
             <div className="calendarContainer">
                 <Calendar
-                    onChange={handleDateChange}
-                    value={selectedDate}
+                    onChange={props.handleDateChange}
+                    value={props.selectedDate}
                     minDate={new Date()}
                 />
             </div>
@@ -30,8 +22,8 @@ function TodoCalendar() {
                 <div className="dateTimePicker">
                     <label>Fecha de inicio:</label>
                     <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
+                        selected={props.startDate}
+                        onChange={(date) => props.setStartDate(date)}
                         showTimeSelect
                         timeFormat="HH:mm"
                         timeIntervals={15}
@@ -44,9 +36,9 @@ function TodoCalendar() {
                 <div className="dateTimePicker">
                     <label>Fecha de fin:</label>
                     <DatePicker
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        minDate={startDate}
+                        selected={props.endDate}
+                        onChange={(date) => props.setEndDate(date)}
+                        minDate={props.startDate}
                         showTimeSelect
                         timeFormat="HH:mm"
                         timeIntervals={15}

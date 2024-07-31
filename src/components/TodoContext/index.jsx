@@ -48,17 +48,19 @@ function TodoProvider({ children }) {
   );
   console.log("aqui estan los todos",searchedTodos)
 
-  const addTodo = (text, category) =>{
+  const addTodo = (text, categories,startDate,endDate) =>{
     const newTodos = [...todos];
     
     newTodos.push({
       id:RandomId(), 
       text, 
       completed: completed, 
-      category: category,
+      category: categories,
       pending:pending,
       inAll:all,
-      inArchived:false
+      inArchived:false,
+      startDate:startDate,
+      endDate:endDate
     })
     saveTodos(newTodos)
   }

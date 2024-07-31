@@ -11,7 +11,11 @@ function TodoForm() {
   const [CategoriesList, setCategoriesList] = React.useState([]);
   const [userJoking, setUserJoking] = React.useState(false);
   const [color, setColor] = useState('#e0e0e0');
-  const [selectedTagId, setSelectedTagId] = useState(null); // Estado para el Tag seleccionado
+  const [selectedTagId, setSelectedTagId] = useState(null);
+  
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date()); // Estado para el Tag seleccionado
 
 
 
@@ -27,7 +31,7 @@ function TodoForm() {
     if (newTodoValue === "") {
       setOpenModal(false);
     } else {
-      addTodo(newTodoValue, newCategoryValue);
+      addTodo(newTodoValue, CategoriesList, startDate, endDate);
       setOpenModal(false);
     }
   };
@@ -89,6 +93,12 @@ function TodoForm() {
     setCategoriesList(newCategories);
   }
 
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setStartDate(date);
+    setEndDate(date);
+};
+
   useEffect(()=>{
     console.log("Aqui esta la lista de categorias",CategoriesList)
   },[CategoriesList])
@@ -133,7 +143,14 @@ function TodoForm() {
               </div>
             </div>
             <div className="container-Calendar__TODO">
-              <TodoCalendar />
+              <TodoCalendar 
+                  startDate={startDate}
+                  endDate={endDate}
+                  selectedDate={selectedDate}
+                  setStartDate={setStartDate}
+                  setEndDate={setEndDate}
+                  handleDateChange={handleDateChange}
+              />
             </div>
           </div>
 
