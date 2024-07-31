@@ -9,15 +9,8 @@ function TodoForm() {
   const [newTodoValue, setNewTodoValue] = React.useState("");
   const [newCategoryValue, setNewCategoryValue] = React.useState("");
   const [CategoriesList, setCategoriesList] = React.useState([]);
-  const [isTodoTag, setTodoTag] = React.useState(false);
   const [userJoking, setUserJoking] = React.useState(false);
 
-  const DetectEvents = (event) => {
-    if (event.keyCode === 32) {
-      setTodoTag(true);
-      console.log("WAS PRESSED THE SPACE KEY");
-    }
-  };
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -67,7 +60,6 @@ function TodoForm() {
 
     setNewCategoryValue("");
 
-    setTodoTag(false);
   };
   useEffect(() => {
     console.log("Categories List", CategoriesList);
@@ -88,7 +80,6 @@ function TodoForm() {
           <div className="container_TodoTag_TodoCalendar">
             <div className="container_TodoTag__TODO">
               <textarea
-                onKeyUpCapture={DetectEvents}
                 placeholder="Category"
                 value={newCategoryValue}
                 onChange={onChangeCategory}
@@ -98,15 +89,7 @@ function TodoForm() {
                 Add category
               </button>
               <div className="Container-TodoTag">
-              {isTodoTag &&
-                newCategoryValue.map((category, index) => (
-                  <TodoTag
-                    key={index}
-                    text={category}
-                    index={parseInt(index) + 1}
-                    className="TodoTag__Category"
-                  />
-                ))}
+
               {CategoriesList.length > 0 &&
                 CategoriesList.map((category, index) => (
                   <TodoTag
