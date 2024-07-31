@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react";
 import { TodoContext } from "../TodoContext";
 import { TodoTag } from "../TodoTag";
 import { TodoCalendar } from "../TodoCalendar";
@@ -10,6 +10,15 @@ function TodoForm() {
   const [newCategoryValue, setNewCategoryValue] = React.useState("");
   const [CategoriesList, setCategoriesList] = React.useState([]);
   const [userJoking, setUserJoking] = React.useState(false);
+  const [color, setColor] = useState('#e0e0e0');
+  const [selectedTagId, setSelectedTagId] = useState(null); // Estado para el Tag seleccionado
+
+
+
+  const RandomId = () =>{
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  }
+
 
 
   const onSubmit = (event) => {
@@ -52,19 +61,32 @@ function TodoForm() {
   };
   const addCategory = (event) => {
     event.preventDefault();
-    console.log(newCategoryValue.length);
-    const newCategories = [...CategoriesList];
-
-    newCategories.unshift(...newCategoryValue);
-    setCategoriesList(newCategories);
-
+    
+    let dict=[]
+    newCategoryValue.forEach(element => {
+        dict = [...dict, {id:RandomId(),category:element, color:color}]
+    });
+    console.log("ESTE DEBERIA DE SER EL OBJETO",dict)
+    setCategoriesList([...CategoriesList, ...dict])
     setNewCategoryValue("");
 
   };
-  useEffect(() => {
-    console.log("Categories List", CategoriesList);
-  }, [CategoriesList]);
+  const handleTagClick = (id) => {
+    setSelectedTagId(id === selectedTagId ? null : id); // Alterna entre seleccionar y deseleccionar un tag
+  };
 
+  const handleColorChange = (color) => {
+    setColor(color.hex);
+    setCategoriesList(
+      CategoriesList.map((item) =>
+        item.id === selectedTagId ? { ...item, color: color.hex } : item
+      )
+    );
+  };
+
+  useEffect(()=>{
+    console.log("Aqui esta la lista de categorias",CategoriesList)
+  },[CategoriesList])
   return (
     <>
       <section>
@@ -90,13 +112,16 @@ function TodoForm() {
               </button>
               <div className="Container-TodoTag">
 
-              {CategoriesList.length > 0 &&
-                CategoriesList.map((category, index) => (
+              {CategoriesList &&
+                CategoriesList?.map((item) => (
                   <TodoTag
-                    key={index}
-                    text={category}
-                    index={parseInt(index) + 1}
-                    className="TodoTag__Category"
+                  key={item.id}
+                  id={item.id}
+                  text={item.category}
+                  color={item.color}
+                  isSelected={item.id === selectedTagId}
+                  handleClick={handleTagClick}
+                  handleColorChange={handleColorChange}
                   />
                 ))}
               </div>

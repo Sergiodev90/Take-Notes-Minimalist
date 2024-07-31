@@ -1,5 +1,5 @@
-.todo-tag {
-    display: block;
+/* .todo-tag {
+    display: flex;
     align-items: center;
     background-color: #e0e0e0;
     border-radius: 12px;
@@ -7,10 +7,12 @@
     margin: 4px;
     font-size: 14px;
     word-wrap: break-word; /* Permite que las palabras largas se ajusten al ancho del contenedor */
-    box-sizing: border-box;
+    /* box-sizing: border-box;
     max-width: 300px;
     height: 40px;
-}
+    align-items: center;
+    justify-content: center;
+} */
 
 .todo-tag-remove {
     margin-left: 8px;
@@ -21,3 +23,24 @@
 .todo-tag-remove:hover {
     color: red;
 }
+
+.DeleteIcon{
+    position: inherit;
+    width: 10px;
+    height:  10px;
+    background-image:none;
+    justify-content: center;
+    display: flex;
+    background-color:transparent;
+    align-items: center;
+    cursor: pointer;
+    fill: currentColor; /* Esto hace que el color de relleno use el color de la propiedad color */
+    color: black;
+    margin-left: 10px;
+
+  }
+
+  .DeleteIcon:hover{
+    color:red;
+  } 
+
