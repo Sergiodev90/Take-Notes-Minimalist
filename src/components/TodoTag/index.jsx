@@ -29,7 +29,7 @@ function TodoTag(props) {
           >
             {props.text}
             <span className='close--Delete'>
-                    <DeleteIcon onClick={props.handleDelete} className='DeleteIcon'/>
+                    <DeleteIcon onClick={() =>props.handleDelete(props.id)} className='DeleteIcon'/>
             </span>
           </span>
           {props.isSelected && (

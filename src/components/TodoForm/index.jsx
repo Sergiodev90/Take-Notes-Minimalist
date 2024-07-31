@@ -84,6 +84,11 @@ function TodoForm() {
     );
   };
 
+  const handleDelete = (id) =>{
+    const newCategories = CategoriesList.filter((item) => item.id !== id);
+    setCategoriesList(newCategories);
+  }
+
   useEffect(()=>{
     console.log("Aqui esta la lista de categorias",CategoriesList)
   },[CategoriesList])
@@ -122,6 +127,7 @@ function TodoForm() {
                   isSelected={item.id === selectedTagId}
                   handleClick={handleTagClick}
                   handleColorChange={handleColorChange}
+                  handleDelete={handleDelete}
                   />
                 ))}
               </div>
