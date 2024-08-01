@@ -3,7 +3,7 @@ import "./TodoLoading.css";
 
 function TodosLoading() {
     return (
-        <p> Cargando</p>
+        <p>Cargando...</p>
     );
 }
 

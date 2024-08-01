@@ -80,17 +80,17 @@ function TodoProvider({ children }) {
   };
 
   const deleteTodo = (id) => {
-    // const newTodos = todos.filter((todo) => todo.id !== id);
-    const newTodos = todos.filter((todo) =>{
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    // const newTodos = todos.filter((todo) =>{
 
-      if(todo.id === id){
-        todo.inArchived = true
-        todo.inAll = undefined
-        todo.completed  = undefined
-        todo.pending = undefined
-      }
-      return todo
-    })
+    //   if(todo.id === id){
+    //     todo.inArchived = true
+    //     todo.inAll = undefined
+    //     todo.completed  = undefined
+    //     todo.pending = undefined
+    //   }
+    //   return todo
+    // })
     saveTodos(newTodos)
   };
 

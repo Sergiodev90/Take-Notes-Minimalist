@@ -7,6 +7,7 @@ function CreateTodoButton() {
 
 
   const shouldApplyStartClass = todos.length<= 0 && !loading;
+  
 
   return (
     <button className={`CreateTodoButton ${ shouldApplyStartClass? 'CreateTodoButton--start' : ''}`}

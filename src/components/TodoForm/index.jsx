@@ -4,13 +4,17 @@ import { TodoTag } from "../TodoTag";
 import { TodoCalendar } from "../TodoCalendar";
 import "./TodoForm.css";
 
-function TodoForm() {
+function TodoForm() { 
+  const randomColor = () => {
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    return `#${randomColor}`;
+  }
   const { addTodo, setOpenModal } = React.useContext(TodoContext);
   const [newTodoValue, setNewTodoValue] = React.useState("");
   const [newCategoryValue, setNewCategoryValue] = React.useState("");
   const [CategoriesList, setCategoriesList] = React.useState([]);
   const [userJoking, setUserJoking] = React.useState(false);
-  const [color, setColor] = useState('#e0e0e0');
+  const [color, setColor] = useState(randomColor());
   const [selectedTagId, setSelectedTagId] = useState(null);
   
   const [startDate, setStartDate] = useState(new Date());
@@ -71,6 +75,7 @@ function TodoForm() {
         dict = [...dict, {id:RandomId(),category:element, color:color}]
     });
     console.log("ESTE DEBERIA DE SER EL OBJETO",dict)
+    setColor(randomColor())
     setCategoriesList([...CategoriesList, ...dict])
     setNewCategoryValue("");
 
