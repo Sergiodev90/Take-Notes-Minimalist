@@ -1,5 +1,6 @@
 import React, {  useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { RandomId } from '../../utils/RandomID';
 
 const TodoContext = React.createContext();
 
@@ -11,6 +12,12 @@ function TodoProvider({ children }) {
     error,
   } = useLocalStorage('TODOS_V1', []);
 
+  const {
+    item: Categories,
+    saveItem: saveCategories,
+    // loading: loadingCategories,
+    // error: errorCategories,
+  } = useLocalStorage('CATEGORIES_V1', []);
 
   const [searchValue, setSearchValue] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false);
@@ -23,6 +30,7 @@ function TodoProvider({ children }) {
   const [all,setAll] = useState(true)
   const [pending,setPending] = useState(true)
   const [archived,setArchived] = useState(false)
+  const { RandomId__Todo } = RandomId()
 
 
 
@@ -35,9 +43,9 @@ function TodoProvider({ children }) {
 
   const totalTodos = todos.filter((todo) => todo.inAll).length;
 
-  const RandomId = () =>{
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-  }
+  // const RandomId = () =>{
+  //   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  // }
 
   const searchedTodos = todos.filter(
     (todo) => {
@@ -50,9 +58,12 @@ function TodoProvider({ children }) {
 
   const addTodo = (text, categories,startDate,endDate) =>{
     const newTodos = [...todos];
+    const newCategories = [...Categories];
+
+
     
     newTodos.push({
-      id:RandomId(), 
+      id: RandomId__Todo(), 
       text, 
       completed: completed, 
       category: categories,
@@ -62,6 +73,9 @@ function TodoProvider({ children }) {
       startDate:startDate,
       endDate:endDate
     })
+    newCategories.push(...categories)
+
+    saveCategories(newCategories)
     saveTodos(newTodos)
   }
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState} from "react";
 import { TodoContext } from "../TodoContext";
 import { TodoTag } from "../TodoTag";
 import { TodoCalendar } from "../TodoCalendar";
+import { RandomId } from "../../utils/RandomID";
 import "./TodoForm.css";
 
 function TodoForm() { 
@@ -21,11 +22,7 @@ function TodoForm() {
   const [endDate, setEndDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date()); // Estado para el Tag seleccionado
 
-
-
-  const RandomId = () =>{
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-  }
+  const { RandomId__Category } = RandomId();
 
 
 
@@ -72,7 +69,7 @@ function TodoForm() {
     
     let dict=[]
     newCategoryValue.forEach(element => {
-        dict = [...dict, {id:RandomId(),category:element, color:color}]
+        dict = [...dict, {id:RandomId__Category(),category:element, color:color}]
     });
     console.log("ESTE DEBERIA DE SER EL OBJETO",dict)
     setColor(randomColor())
