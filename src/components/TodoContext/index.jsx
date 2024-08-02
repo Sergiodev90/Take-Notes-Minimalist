@@ -94,18 +94,18 @@ function TodoProvider({ children }) {
   };
 
   const deleteTodo = (id) => {
+    const newLocalCategories = [...Categories]
     const newTodos = todos.filter((todo) => todo.id !== id);
-    // const newTodos = todos.filter((todo) =>{
+  const categoriesToDelete = todos
+    .filter((todo) => todo.id === id)
+    .flatMap((todo) => todo.category.map((cat) => cat.id));
+  
+  const newCategories = newLocalCategories.filter(
+    (category) => !categoriesToDelete.includes(category.id)
+  );
 
-    //   if(todo.id === id){
-    //     todo.inArchived = true
-    //     todo.inAll = undefined
-    //     todo.completed  = undefined
-    //     todo.pending = undefined
-    //   }
-    //   return todo
-    // })
     saveTodos(newTodos)
+    saveCategories(newCategories)
   };
 
 

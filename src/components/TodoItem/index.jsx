@@ -22,7 +22,11 @@ function TodoItem(props) {
         {props.text}
       </p>
       {/* <DeleteIcon onDelete={props.onDelete} /> */}
-      <TodoCategory />
+
+      <div className="Container_Category--TODOS">
+          <TodoCategory categories={props.categories}/>
+          
+      </div>
       <ArchiveBoxIcon className="ArchiveIcon" onClick={props.onDelete}/>
     </li>
   );

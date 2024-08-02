@@ -63,10 +63,12 @@ function AppUI() {
                 <TodoItem
                 key={todo.id}
                 text={todo.text}
+                categories={todo.category}
                 completed={todo.completed}
                 isOnArchives={todo.inArchived}
                 onComplete={() => completeTodo(todo.id)}
                 onDelete={() => deleteTodo(todo.id)}
+
               />
 
 

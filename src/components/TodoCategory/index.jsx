@@ -1,11 +1,32 @@
 import './TodoCategory.css'
 
-function TodoCategory(){
+function TodoCategory({categories}){
+
+
     return(
-        <span>Example of category</span>
+        categories.map((category) =>(
+                <span style={{
+                        backgroundColor: category.color,
+                        display: 'flex',
+                        alignItems: 'center',
+                        borderRadius: '12px',
+                        padding: '0 8px',
+                        margin: '4px',
+                        fontSize: '14px',
+                        wordWrap: 'break-word',
+                        boxSizing: 'border-box',
+                        maxWidth: '300px',
+                        height: '40px',
+                        cursor: 'pointer',
+                        opacity:'0.9'
+                    }}>{category.category}</span>
+                ))
     );
 
 }
+
+
+
 
 export {TodoCategory}	
 
