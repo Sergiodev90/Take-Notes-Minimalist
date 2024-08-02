@@ -147,7 +147,8 @@ function TodoProvider({ children }) {
       setArchived,
       setAll,
       pending,
-      setPending
+      setPending,
+      Categories
       
   
     }}>

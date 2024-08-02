@@ -31,7 +31,8 @@ function AppUI() {
     stateClickAll,
     stateClickArchived,
     stateClickPending,
-    setOpenModal
+    setOpenModal,
+    Categories
   } = React.useContext(TodoContext);
 
 
@@ -41,7 +42,7 @@ function AppUI() {
     <Root>
       <TodoHeader>
         <TodoCounter completed={completedTodos} total={totalTodos} />
-        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} categories={Categories}/>
       </TodoHeader>
         <TodoContainer className="TodoList-Container">
          <TodoList
