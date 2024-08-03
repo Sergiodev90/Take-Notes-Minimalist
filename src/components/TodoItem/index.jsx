@@ -1,18 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TodoCategory } from "../TodoCategory";
 import { ReactComponent as ArchiveBoxIcon } from "../../svg/archive.svg";
+import { useState } from "react";
 import { CheckboxCircular } from "../CheckBoxCircular";
 import "./TodoItem.css";
 import { TodoContext } from "../TodoContext";
 
 function TodoItem(props) {
+
+  const [expandedTodos, setExpandedTodos] = useState([]);
+
+
+  const handleToggleExpand = (id) => {
+      setExpandedTodos((prev) => 
+          prev.includes(id) ? prev.filter(todoId => todoId !== id) : [...prev, id]
+      );
+      
+  };
+
+
+
   const { completed,setCompleted} = useContext(TodoContext)
   const handleCheckboxChange = () => {
     setCompleted(!completed);
     props.onComplete();
   };
 
-      
+
   
 
   return (
@@ -23,10 +37,10 @@ function TodoItem(props) {
       </p>
       {/* <DeleteIcon onDelete={props.onDelete} /> */}
 
-      <div className="Container_Category--TODOS">
-          <TodoCategory categories={props.categories}/>
+
+          <TodoCategory categories={props.categories} isExpanded={expandedTodos.includes(props.key)}  handleClickTag={() => handleToggleExpand(props.key)}/>
           
-      </div>
+      
       <ArchiveBoxIcon className="ArchiveIcon" onClick={props.onDelete}/>
     </li>
   );

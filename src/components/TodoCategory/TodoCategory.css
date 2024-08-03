@@ -8,6 +8,30 @@ span{
     font-size: 15px;
 }
 
-/* .Container-catory__todo{
-    max-width: ;
-} */
+.Container-Tag{
+    display: flex;
+}
+
+
+.Contaner-All_Tags{
+    display: flex;
+}
+
+.Contaner-All_Tags--open {
+    display: block;
+    flex-direction: column;
+    background-color: #1D446f;
+    position: absolute;
+    right: 70px;
+    top: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 1;
+}
+.Container-Tag--open{
+    overflow-y: auto;
+
+}
+

@@ -1,7 +1,7 @@
 import "./TodoSearch.css";
 import React, { useEffect, useState } from "react";
 
-function TodoSearch({SearchValue, setSearchValue,categories}) {
+function TodoSearch({ SearchValue, setSearchValue, categories }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,9 @@ function TodoSearch({SearchValue, setSearchValue,categories}) {
     if (dropdownBtnText && icon && list) {
       dropdownBtnText.onclick = function () {
         list.classList.toggle("show");
-        icon.style.rotate = list.classList.contains("show") ? "-180deg" : "0deg";
+        icon.style.rotate = list.classList.contains("show")
+          ? "-180deg"
+          : "0deg";
       };
     }
 
@@ -47,50 +49,48 @@ function TodoSearch({SearchValue, setSearchValue,categories}) {
 
   return (
     <>
-    <div className="search-bar-mobile">
-    <i className="fa-solid fa-magnifying-glass"></i>
-    </div>
-    <div className={`search-bar ${isExpanded ? 'expanded' : ''}`}>
-      <div className="search-box">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Search"
-          value={SearchValue}
-          onChange={(event) => {
-            setSearchValue(event.target.value);
-          }}
-        />
+      <div className="search-bar-mobile">
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
-      <button
-        className="expand-btn"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        <i className={`fa-solid ${isExpanded ? 'fa-times' : 'fa-magnifying-glass'}`}></i>
-      </button>
-    </div>
+
+      <div className={`search-bar ${isExpanded ? "expanded" : ""}`}>
+        {
+          <div className="dropdown">
+            <div id="drop-text" className="dropdown-text">
+              <span id="span">TAGS</span>
+              <i id="icon" className="fa-solid fa-chevron-down"></i>
+            </div>
+
+            <ul id="list" className="dropdown-list">
+              {categories &&
+                categories.map((category) => (
+                  <li className="dropdown-list-item" key={category.id} onClick={()=>}>
+                    {category.category}
+                  </li>
+                ))}
+              {!categories && <p>No categories yet</p>}
+            </ul>
+          </div>
+        }
+        <div className="search-box">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search"
+            value={SearchValue}
+            onChange={(event) => {
+              setSearchValue(event.target.value);
+            }}
+          />
+        </div>
+
+        <button
+          className="expand-btn"
+          onClick={() => setIsExpanded(!isExpanded)}
+        ></button>
+      </div>
     </>
   );
 }
 
 export { TodoSearch };
-
-
-// {/* <div className="dropdown">
-// <div id="drop-text" className="dropdown-text">
-//   <span id="span">Everything</span>
-//   <i id="icon" className="fa-solid fa-chevron-down"></i>
-// </div>
-
-// <ul id="list" className="dropdown-list">
-//   {categories &&categories.map((category)=>(
-//     <li className="dropdown-list-item" key={category.id}>{category.category}</li>
-//   ))}
-//   {/* <li className="dropdown-list-item">Everything</li>
-//   <li className="dropdown-list-item">Videos</li>
-//   <li className="dropdown-list-item">Community</li>
-//   <li className="dropdown-list-item">Playlists</li>
-//   <li className="dropdown-list-item">Shorts</li> */}
-// // </ul>
-// // </div> */}

@@ -149,8 +149,6 @@ function TodoProvider({ children }) {
       pending,
       setPending,
       Categories
-      
-  
     }}>
       {children}
     </TodoContext.Provider>
