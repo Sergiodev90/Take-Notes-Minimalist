@@ -32,7 +32,8 @@ function AppUI() {
     stateClickArchived,
     stateClickPending,
     setOpenModal,
-    Categories
+    Categories,
+    searchedTodosByCategory
   } = React.useContext(TodoContext);
 
 
@@ -53,6 +54,7 @@ function AppUI() {
           stateClickPending = {stateClickPending}
           error={error}
           searchedTodos = {searchedTodos}
+          searchedTodosByCategory = {searchedTodosByCategory}
           todos = {todos}
           onError = {()=><TodosError/>}
           onLoading = {()=> <TodosLoading/>}
@@ -64,7 +66,7 @@ function AppUI() {
                 <TodoItem
                 key={todo.id}
                 text={todo.text}
-                categories={todo.category}
+                categories={todo.categories}
                 completed={todo.completed}
                 isOnArchives={todo.inArchived}
                 onComplete={() => completeTodo(todo.id)}

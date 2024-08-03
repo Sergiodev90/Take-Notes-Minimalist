@@ -17,9 +17,10 @@ function TodoProvider({ children }) {
     saveItem: saveCategories,
     // loading: loadingCategories,
     // error: errorCategories,
-  } = useLocalStorage('CATEGORIES_V1', []);
+  } = useLocalStorage('CATEGORIES_V1', [{id:1,category:'All',color:"no one"}]);
 
   const [searchValue, setSearchValue] = React.useState('');
+  const [searchCategory,setSearchCategory] = React.useState('')
   const [openModal, setOpenModal] = React.useState(false);
   const [stateClickAll,setStateClickAll] = React.useState(true);
   const [stateClickCompleted,setStateClickCompleted] = React.useState(false);
@@ -51,10 +52,17 @@ function TodoProvider({ children }) {
     (todo) => {
       const todoText = todo.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
-      return todoText.includes(searchText);
+      return todoText.includes(searchText) 
     }
   );
-  console.log("aqui estan los todos",searchedTodos)
+  
+  const searchedTodosByCategory= todos.filter((todo,i) => {
+    const todoCategory = todo.categories[i].category
+    const search_button = searchCategory
+    return todoCategory.includes(search_button)
+          
+  });
+  console.log('Aqui esta las categorias funcionando', searchCategory, searchedTodosByCategory)
 
   const addTodo = (text, categories,startDate,endDate) =>{
     const newTodos = [...todos];
@@ -66,7 +74,7 @@ function TodoProvider({ children }) {
       id: RandomId__Todo(), 
       text, 
       completed: completed, 
-      category: categories,
+      categories: categories,
       pending:pending,
       inAll:all,
       inArchived:false,
@@ -98,7 +106,7 @@ function TodoProvider({ children }) {
     const newTodos = todos.filter((todo) => todo.id !== id);
   const categoriesToDelete = todos
     .filter((todo) => todo.id === id)
-    .flatMap((todo) => todo.category.map((cat) => cat.id));
+    .flatMap((todo) => todo.categories.map((cat) => cat.id));
   
   const newCategories = newLocalCategories.filter(
     (category) => !categoriesToDelete.includes(category.id)
@@ -148,7 +156,9 @@ function TodoProvider({ children }) {
       setAll,
       pending,
       setPending,
-      Categories
+      Categories,
+      setSearchCategory,
+      searchedTodosByCategory
     }}>
       {children}
     </TodoContext.Provider>

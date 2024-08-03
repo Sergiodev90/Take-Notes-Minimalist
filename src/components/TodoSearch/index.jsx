@@ -1,8 +1,17 @@
+import React, { useContext, useEffect, useState } from "react";
 import "./TodoSearch.css";
-import React, { useEffect, useState } from "react";
+import { TodoContext } from "../TodoContext";
+
+
 
 function TodoSearch({ SearchValue, setSearchValue, categories }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const {setSearchCategory} = useContext(TodoContext)
+
+  const handleSendingValueCategory = (item) =>{
+    setSearchCategory(item)
+  }
+
 
   useEffect(() => {
     const dropdownBtnText = document.getElementById("drop-text");
@@ -64,7 +73,7 @@ function TodoSearch({ SearchValue, setSearchValue, categories }) {
             <ul id="list" className="dropdown-list">
               {categories &&
                 categories.map((category) => (
-                  <li className="dropdown-list-item" key={category.id} onClick={()=>}>
+                  <li className="dropdown-list-item" key={category.id} onClick={() => handleSendingValueCategory(category.category)}>
                     {category.category}
                   </li>
                 ))}
@@ -79,7 +88,7 @@ function TodoSearch({ SearchValue, setSearchValue, categories }) {
             placeholder="Search"
             value={SearchValue}
             onChange={(event) => {
-              setSearchValue(event.target.value);
+            setSearchValue(event.target.value);
             }}
           />
         </div>
