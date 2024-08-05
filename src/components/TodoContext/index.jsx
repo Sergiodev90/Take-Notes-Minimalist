@@ -20,7 +20,7 @@ function TodoProvider({ children }) {
   } = useLocalStorage('CATEGORIES_V1', [{id:1,category:'All',color:"no one"}]);
 
   const [searchValue, setSearchValue] = React.useState('');
-  const [searchCategory,setSearchCategory] = React.useState('')
+  const [searchCategory,setSearchCategory] = React.useState('All')
   const [openModal, setOpenModal] = React.useState(false);
   const [stateClickAll,setStateClickAll] = React.useState(true);
   const [stateClickCompleted,setStateClickCompleted] = React.useState(false);
@@ -56,11 +56,12 @@ function TodoProvider({ children }) {
     }
   );
   
-  const searchedTodosByCategory= todos.filter((todo,i) => {
-    const todoCategory = todo.categories[i].category
-    const search_button = searchCategory
-    return todoCategory.includes(search_button)
-          
+  const searchedTodosByCategory= todos.filter(todo => {
+
+    
+    const todoCategories = todo.categories.find(category => category.category === searchCategory)
+    
+    return todoCategories !== undefined          
   });
   console.log('Aqui esta las categorias funcionando', searchCategory, searchedTodosByCategory)
 
@@ -158,7 +159,9 @@ function TodoProvider({ children }) {
       setPending,
       Categories,
       setSearchCategory,
-      searchedTodosByCategory
+      searchedTodosByCategory,
+      searchCategory
+      
     }}>
       {children}
     </TodoContext.Provider>
@@ -166,3 +169,6 @@ function TodoProvider({ children }) {
 }
 
 export { TodoContext, TodoProvider };
+
+
+

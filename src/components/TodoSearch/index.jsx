@@ -6,7 +6,7 @@ import { TodoContext } from "../TodoContext";
 
 function TodoSearch({ SearchValue, setSearchValue, categories }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const {setSearchCategory} = useContext(TodoContext)
+  const {setSearchCategory,searchCategory} = useContext(TodoContext)
 
   const handleSendingValueCategory = (item) =>{
     setSearchCategory(item)
@@ -46,7 +46,7 @@ function TodoSearch({ SearchValue, setSearchValue, categories }) {
       for (let item of listItems) {
         item.onclick = function (e) {
           span.innerText = e.target.innerText;
-          if (e.target.innerText === "Everything") {
+          if (e.target.innerText === "All") {
             input.placeholder = "Search";
           } else {
             input.placeholder = "Search in " + e.target.innerText + "...";
@@ -66,7 +66,7 @@ function TodoSearch({ SearchValue, setSearchValue, categories }) {
         {
           <div className="dropdown">
             <div id="drop-text" className="dropdown-text">
-              <span id="span">TAGS</span>
+              <span id="span">{searchCategory}</span>
               <i id="icon" className="fa-solid fa-chevron-down"></i>
             </div>
 

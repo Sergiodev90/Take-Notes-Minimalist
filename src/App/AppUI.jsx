@@ -33,7 +33,8 @@ function AppUI() {
     stateClickPending,
     setOpenModal,
     Categories,
-    searchedTodosByCategory
+    searchedTodosByCategory,
+    searchCategory
   } = React.useContext(TodoContext);
 
 
@@ -55,12 +56,12 @@ function AppUI() {
           error={error}
           searchedTodos = {searchedTodos}
           searchedTodosByCategory = {searchedTodosByCategory}
+          searchCategory ={searchCategory}
           todos = {todos}
           onError = {()=><TodosError/>}
           onLoading = {()=> <TodosLoading/>}
           onEmpty = {() => <EmptyTodos/>}
           onNotFound = {() => <TodoNotFound/>}
-          
           renderAll ={(todo)=>(
 
                 <TodoItem
