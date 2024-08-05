@@ -69,6 +69,7 @@
   transition: max-height 0.5s;
   z-index: 10;
   filter: var(--neon);
+  overflow-y: auto;
 }
 
 .dropdown-list-item {

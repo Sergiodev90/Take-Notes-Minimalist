@@ -3,11 +3,16 @@ import Calendar from 'react-calendar';
 import DatePicker from 'react-datepicker';
 import 'react-calendar/dist/Calendar.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addDays } from 'date-fns';
+import { format } from 'date-fns';
 import './TodoCalendar.css';
 
 function TodoCalendar(props) {
-
+    const formatDate = (date) =>{
+        return format(date,'MMMM d, yyyy')
+    }
+    const formatTime = (date) =>{
+        return format(date,'h:mm aa')
+    }
 
     return (
         <div className='container'>

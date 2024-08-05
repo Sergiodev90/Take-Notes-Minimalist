@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import './TodoCategory.css';
+import { tagStyle as StylesCategory } from '../TodoTag';
+
 
 function TodoCategory({ categories, isExpanded, handleClickTag }) {
 
@@ -11,48 +12,20 @@ function TodoCategory({ categories, isExpanded, handleClickTag }) {
                     categories.map((element) => (
                         <span
                             className=''
-                            key={element.id} // Añadir key para evitar advertencias en la consola
-                            style={{
-                                backgroundColor: element.color,
-                                display: 'flex',
-                                alignItems: 'center',
-                                borderRadius: '12px',
-                                padding: '0 8px',
-                                margin: '6px 6px 26px 6px',
-                                fontSize: '14px',
-                                wordWrap: 'break-word',
-                                boxSizing: 'border-box',
-                                maxWidth: '300px',
-                                height: '40px',
-                                cursor: 'pointer',
-                                opacity: '0.9'
-                            }}
+                            key={element?.id} // Añadir key para evitar advertencias en la consola
+                            style={StylesCategory(element)}
                             onClick={handleClickTag}
                         >
-                            {element.category}
+                            {element?.category}
                         </span>
                     ))
                 ) : (
                     <>
                         <span
-                            style={{
-                                backgroundColor: categories[0].color,
-                                display: 'flex',
-                                alignItems: 'center',
-                                borderRadius: '12px',
-                                padding: '0 8px',
-                                margin: '4px',
-                                fontSize: '14px',
-                                wordWrap: 'break-word',
-                                boxSizing: 'border-box',
-                                maxWidth: '300px',
-                                height: '40px',
-                                cursor: 'pointer',
-                                opacity: '0.9'
-                            }}
+                            style={StylesCategory(categories[0])}
                             onClick={handleClickTag}
                         >
-                            {categories[0].category}
+                            {categories[0]?.category}
                         </span>
                         {categories.length > 1 && <span style={{ marginLeft: '10px', cursor: 'pointer' }} onClick={handleClickTag}>
                             +{categories.length - 1} more

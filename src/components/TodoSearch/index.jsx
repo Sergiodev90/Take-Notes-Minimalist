@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./TodoSearch.css";
 import { TodoContext } from "../TodoContext";
+import { tagStyle } from "../TodoTag";
 
 
 
@@ -73,7 +74,7 @@ function TodoSearch({ SearchValue, setSearchValue, categories }) {
             <ul id="list" className="dropdown-list">
               {categories &&
                 categories.map((category) => (
-                  <li className="dropdown-list-item" key={category.id} onClick={() => handleSendingValueCategory(category.category)}>
+                  <li className="dropdown-list-item" key={category.id} style={tagStyle(category)} onClick={() => handleSendingValueCategory(category.category)}>
                     {category.category}
                   </li>
                 ))}

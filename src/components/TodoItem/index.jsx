@@ -38,7 +38,7 @@ function TodoItem(props) {
       {/* <DeleteIcon onDelete={props.onDelete} /> */}
 
 
-          <TodoCategory categories={props.categories} isExpanded={expandedTodos.includes(props.key)}  handleClickTag={() => handleToggleExpand(props.key)}/>
+          <TodoCategory categories={props?.categories} isExpanded={expandedTodos.includes(props?.key)}  handleClickTag={() => handleToggleExpand(props?.key)}/>
           
       
       <ArchiveBoxIcon className="ArchiveIcon" onClick={props.onDelete}/>
